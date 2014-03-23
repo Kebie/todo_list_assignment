@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>Task keeper</title>
+</head>
+<body>
+<h1>My Todos</h1>
+
+<h2>Add Task</h2>
+<form action="/" method="post">
+  <label for="task">Task name</label>
+  <input type="text" name="task"> 
+  <input type="submit" value="Create Task"> 
+</form>
+
+  
+  <h2>Pending Tasks</h2>
+  <table>
+    <% @tasks_un.each do |task| %>
+    <tr>
+        <td><%= task.task %></td>
+        <td>
+          <form action="/<%= task.id %>" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="Mark Complete">
+          </form>
+
+        </td>
+    </tr>
+    <% end %>
+
+  </table>
+
+
+
+
+<h2>Completed Tasks</h2>
+
+  <table>
+    <% @tasks_comp.each do |task| %>
+    <tr>
+        <td><%= task.task %></td>
+        <td>
+          <form action="/<%= task.id %>" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="submit" value="Mark UnComplete">
+          </form>
+
+        </td>
+    </tr>
+    <% end %>
+
+  </table>
+
+</body>
+</html>
